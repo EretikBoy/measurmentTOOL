@@ -27,6 +27,10 @@ class GWInstekProvider:
     USB_IDS = {'2184': ['0043', '0044', '0045', '0046'], '098f': ['2205']}
     
     def __init__(self, port: str = None):
+        if 'COM' in port:
+            port = port
+        elif 'ASRL' in port:
+            port = port.replace('ASRL','COM')[:4]
         self.com = COMProvider(port, 'gwinstek')
         self.chnum = 4
         self.connection_status = 0

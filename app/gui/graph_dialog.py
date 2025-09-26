@@ -9,7 +9,7 @@ from PyQt6.QtCore import Qt, QPoint
 from PyQt6.QtGui import QCursor
 
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qtagg import NavigationToolbar2QT as NavigationToolbar
+from matplotlib.backends.backend_qt import NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
 from matplotlib.patches import Rectangle
 
@@ -100,7 +100,7 @@ class GraphDialog(QDialog):
         settings_layout.addWidget(self.record_time_spin, row, 1)
         row += 1
         
-        settings_layout.addWidget(QLabel("Начало отсчёта (c):"), row, 0)
+        settings_layout.addWidget(QLabel("Относительное смещение строба (c):"), row, 0)
         self.cut_second_spin = QDoubleSpinBox()
         self.cut_second_spin.setRange(-100, 100.0)
         self.cut_second_spin.setSingleStep(0.1)

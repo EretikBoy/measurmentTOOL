@@ -1,13 +1,14 @@
 import sys
 import os
 
-import matplotlib.pyplot as plt
 import logging
 
 from PyQt6.QtWidgets import QApplication
+
 # from modules.gwinstekprovider import GWInstekProvider
 # from modules.rigolprovider import *
-
+# from modules.tektronixprovider import TektronixProvider
+# import matplotlib.pyplot as plt
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
@@ -84,6 +85,42 @@ if __name__ == "__main__":
 #         print(f"Rigol error occurred: {e}")
 #     except Exception as e:
 #         print(f"Unexpected error: {e}")
+
+
+# if __name__ == '__main__':
+#     try:
+#         with TektronixProvider('USB0::0x0699::0x0408::C010852::INSTR') as device:
+#             # Создаем фигуру и оси для графика
+#             fig, ax = plt.subplots(figsize=(10, 6))
+            
+#             # Перебираем все каналы
+#             for channel_num in range(1, device.chnum + 1):
+#                 channel = device.get_channel_data(channel_num)
+#                 if channel and channel.data is not None:
+#                     # Извлекаем временные данные и амплитуды
+#                     time_data = channel.data['Время'].values
+#                     amplitude_data = channel.data['Амплитуда'].values
+                    
+#                     # Строим график для этого канала
+#                     ax.plot(time_data, amplitude_data, label=f'CH{channel_num}')
+                    
+#                     print(f"Канал CH{channel_num}:")
+#                     print(f"  Количество точек: {len(time_data)}")
+#                     print()
+            
+#             # Настраиваем график
+#             ax.set_xlabel('Время, сек')
+#             ax.set_ylabel('Амплитуда, В')
+#             ax.set_title(f'Сигналы с осциллографа {device.model_name}')
+#             ax.grid(True)
+#             ax.legend()
+            
+#             # Показываем график
+#             plt.tight_layout()
+#             plt.show()
+
+#     except Exception as e:
+#         print(f"Ошибка: {str(e)}")
 
     
 
